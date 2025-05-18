@@ -34,6 +34,11 @@
 	--transition-fast: 0.2s ease;
 	--transition-normal: 0.3s ease;
 	--transition-slow: 0.5s ease;
+	
+	/* Shadow Variables */
+	--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+	--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* Base HTML and Body Styles */
@@ -145,11 +150,12 @@ img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform var(--transition-normal);
+	transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .grid-item img:hover {
 	transform: scale(1.05);
+	box-shadow: var(--shadow-md);
 }
 
 /* Section Container Styles */
@@ -194,6 +200,19 @@ img {
 	font-weight: bold;
 	border-radius: var(--radius-sm);
 	transition: all var(--transition-normal);
+	background-color: var(--knox-blue);
+	color: var(--knox-white);
+	box-shadow: var(--shadow-sm);
+	transform: translateY(0);
+}
+
+.age-button:hover,
+.middle-school:hover,
+.high-school:hover {
+	background-color: var(--knox-lt-blue);
+	color: var(--knox-white);
+	box-shadow: var(--shadow-md);
+	transform: translateY(-2px);
 }
 
 /* Back to Top Button */
@@ -219,21 +238,18 @@ img {
 /* Explanation Box Styles */
 .explanation-box,
 .explanation-box1 {
-	border-radius: var(--radius-md);
+	background-color: var(--knox-white);
 	padding: var(--spacing-lg);
-	margin: var(--spacing-lg) auto;
-	text-align: left;
-	width: min(80%, 1200px);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-sm);
+	transition: all var(--transition-normal);
+	margin: var(--spacing-md) 0;
 }
 
-.explanation-box {
-	background-color: #f0f8ff;
-	border: 2px solid #add8e6;
-}
-
-.explanation-box1 {
-	background-color: transparent;
-	border: 3px solid var(--knox-blue);
+.explanation-box:hover,
+.explanation-box1:hover {
+	box-shadow: var(--shadow-md);
+	transform: translateY(-2px);
 }
 
 /* Code Highlight Styles */
@@ -260,6 +276,12 @@ img {
 	align-items: center;
 	padding: var(--spacing-sm) var(--spacing-md);
 	z-index: 999;
+	box-shadow: var(--shadow-sm);
+	transition: box-shadow var(--transition-normal);
+}
+
+.top-bar:hover {
+	box-shadow: var(--shadow-md);
 }
 
 /* Dropdown Menu Styles */
@@ -287,6 +309,27 @@ img {
 
 .menu a:hover {
 	color: var(--knox-gray);
+}
+
+/* Navigation Enhancement */
+.menu a {
+	position: relative;
+	transition: color var(--transition-normal);
+}
+
+.menu a::after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: -2px;
+	left: 0;
+	background-color: var(--knox-lt-blue);
+	transition: width var(--transition-normal);
+}
+
+.menu a:hover::after {
+	width: 100%;
 }
 
 /*
@@ -349,6 +392,16 @@ img {
 	color: var(--knox-white);
 	position: relative;
 	z-index: 2;
+	opacity: 0;
+	transform: translateY(20px);
+	animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /*
