@@ -252,6 +252,16 @@ img {
 	transform: translateY(-2px);
 }
 
+ .explanation-box3 {
+      background-color: #transparent;
+      border: 3px solid #0A2D4C;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px auto;
+      max-width: 90%;
+      text-align: left;
+    }
+
 /* Code Highlight Styles */
 .code-highlight {
 	background-color: var(--knox-lt-gray);
